@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native';
 import axios from 'axios';
+import { LinearGradient } from 'expo-linear-gradient';
+
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -19,7 +21,7 @@ const LoginScreen = ({ navigation }) => {
         const { userId } = response.data; // Assuming the backend returns the userId
         Alert.alert('Success', 'Logged in successfully!');
         navigation.navigate('AfterSignUp', { userId: response.data.userId });
- // Pass userId to AfterSignUpScreen
+        // Pass userId to AfterSignUpScreen
       }
     } catch (error) {
       console.error(error);
@@ -28,7 +30,12 @@ const LoginScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <LinearGradient
+      colors={['purple', 'white']}
+      style={styles.container}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
+    >
       <Text style={styles.title}>Login</Text>
 
       <TextInput
@@ -54,23 +61,22 @@ const LoginScreen = ({ navigation }) => {
       <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
         <Text style={styles.link}>Don't have an account? Sign Up</Text>
       </TouchableOpacity>
-    </View>
+    </LinearGradient>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     paddingHorizontal: 20,
-    backgroundColor: '#fff',
+    justifyContent: 'center',
   },
   title: {
     fontSize: 28,
     fontWeight: 'bold',
     textAlign: 'center',
     marginBottom: 20,
-    color: '#755fb4',
+    color: '#fff',
   },
   input: {
     borderWidth: 1,
