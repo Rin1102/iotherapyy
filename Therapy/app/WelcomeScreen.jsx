@@ -37,7 +37,7 @@ const WelcomeScreen = ({ navigation }) => {
 
         {/* Girl Image */}
         <Image
-          source={require('../assets/images/girll.png')} // Replace with your image path
+          source={require('../assets/images/image.png')} // Replace with your image path
           style={styles.girlImage}
         />
       </View>
